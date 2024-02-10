@@ -22,7 +22,7 @@ class StoreProjectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|max:50',
+            'title' => 'required|max:50|unique:projects,title',
             'description' => 'string|nullable',
             'languages' => 'required|max:70',
             'frameworks' => 'required|max:50'
@@ -39,6 +39,7 @@ class StoreProjectRequest extends FormRequest
             'languages.max' => 'Numero massimo caratteri: :max',
             'frameworks.required' => 'Frameworks utilizzati richiesti',
             'frameworks.max' => 'Numero massimo caratteri: :max',
+            'title.unique' => 'Il titolo è già presente nel database'
         ];
     }
 }
